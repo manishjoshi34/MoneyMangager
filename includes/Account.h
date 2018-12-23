@@ -2,28 +2,26 @@
 #define __ACCOUNT_H__
 
 #include "Entry.h"
+#include "mQueue.h"
 
-#include<cstring>
-#include<queue>
-
-using namespace std;
+#include<string>
 
 class Account{
 	private:
 		static long int mNumberOfAccounts;
 	private:
-		string* mPancardNo;
-		string* mName;
-		string* mEmail;
-		string* mPhone;
-		string* mMobile;
+		std::string* mPancardNo;
+		std::string* mName;
+		std::string* mEmail;
+		std::string* mPhone;
+		std::string* mMobile;
 
 		AmountType mBalance;
 		AmountType mTotalTax;
 		AmountType mTaxPaid;
 		AmountType mTaxExcemtedAmount;
 
-		queue<Entry*> mEntries;
+		mQueue<Entry*> mEntries;
 
 	public:
 	       	Account();
@@ -32,23 +30,23 @@ class Account{
 		AmountType GetMyRemainingTax();
 		void showAllEntries();
 
-		string GetName();
-		string GetEmailId();
-		string GetMobileNo();
-		string GetPhoneNo();
-		string GetPancardNo();
-		string GetMyBalance();
-		string GetMyTotalTax();
-		string GetMyPaidTax();
-		string GetRemainingTax();
+		std::string GetName();
+		std::string GetEmailId();
+		std::string GetMobileNo();
+		std::string GetPhoneNo();
+		std::string GetPancardNo();
+		std::string GetBalance();
+		std::string GetMyTotalTax();
+		std::string GetMyPaidTax();
+		std::string GetRemainingTax();
 
-		void SetName(string*);
-		void SetPancardNo(string*);
-		void SetEmailId(string*);
-		void SetMobileNo(string*);
-		void SetPhoneNo(string*);
+		void SetName(std::string*);
+		void SetPancardNo(std::string*);
+		void SetEmailId(std::string*);
+		void SetMobileNo(std::string*);
+		void SetPhoneNo(std::string*);
 };
 
-static Account::mNumberOfAccounts = 0;
+long int Account::mNumberOfAccounts = 0;
 
-
+#endif

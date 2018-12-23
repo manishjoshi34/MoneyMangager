@@ -29,7 +29,7 @@ Entry::Entry()
 	mAmount = 0.0;
 }
 Entry::Entry(AmountType aAmount):
-	mAnount(aAmount)
+	mAmount(aAmount)
 {
 }
 Entry::~Entry()
@@ -53,14 +53,17 @@ CreditEntry::CreditEntry(AmountType aAmount):
 }
 CreditEntry::~CreditEntry()
 {
+
 }
+
 //..............DebitEntry..................
 
 class DebitEntry : public Entry
-{	public:
-	DebitEntry();
-	DebitEntry(AmountType);
-	virtual ~DebitEntry();
+{	
+	public:
+		DebitEntry();
+		DebitEntry(AmountType);
+		virtual ~DebitEntry();
 
 };
 DebitEntry::DebitEntry():
@@ -70,5 +73,9 @@ DebitEntry::DebitEntry():
 DebitEntry::DebitEntry(AmountType aAmount):
 	Entry(aAmount)
 {
+}
+DebitEntry::~DebitEntry()
+{
+
 }
 #endif
