@@ -30,7 +30,8 @@ all: $(OBJECTS)
 
 $(BUILD_PATH)/%.o: $(SRC_PATH)/%.$(SRC_EXT)
 	@echo "Compiling: $< -> $@"
-	$(GCC) $(FLAGS) $(INCLUDES) -c $< -o $@
+	$(GCC)  -c $< $(FLAGS) -o $@ $(INCLUDES)
+
 .PHONEY: clean
 clean :
 	@echo "DEleting $(BIN_NAME) symlink"

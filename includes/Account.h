@@ -2,9 +2,9 @@
 #define __ACCOUNT_H__
 
 #include "Entry.h"
-#include "mQueue.h"
 
 #include<string>
+#include<queue>
 
 class Account{
 	private:
@@ -21,7 +21,7 @@ class Account{
 		AmountType mTaxPaid;
 		AmountType mTaxExcemtedAmount;
 
-		mQueue<Entry*> mEntries;
+		std::queue<Entry*> mEntries;
 
 	public:
 	       	Account();
