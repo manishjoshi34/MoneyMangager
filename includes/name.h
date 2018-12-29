@@ -12,7 +12,7 @@ using namespace std;
 
 class NameElement
 {
-	private:
+	protected:
 		string mFirstName;
 		string mMiddleName;
 		string mLastName;

@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 #include <mutex>
-#include<sstream>
+#include <sstream>
 
 #include "LogWritter.h"
 
@@ -15,6 +15,8 @@ enum logtype
 	warning,
 	error
 };
+
+const string mFilename = "log.mj";
 template <typename LogWritter>
 class Logger
 {
@@ -28,12 +30,22 @@ class Logger
 		template<typename First, typename...Rest>
 		void print_impl(First arg1, Rest...args);
 		LogWritter* mLogWritter;
-	public:
 		Logger(const string& aFilename);
+		
+
+	public:
+		static Logger<LogWritter>* getLogger();
 		template< logtype aLogType, typename...Args >
 		void print(Args...args);
 		~Logger();
 };
+
+template<typename LogWritter>
+Logger<LogWritter>* Logger<LogWritter>::getLogger()
+{
+	static Logger<LogWritter> mLogger(mFilename);
+	return &mLogger;
+}
 
 template <typename LogWritter>
 Logger<LogWritter>::Logger(const string& filename)

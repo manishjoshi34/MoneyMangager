@@ -1,47 +1,29 @@
-#include "Account.h"
-#include "Entry.h"
-#include "name.h"
+#include "LoginDetail.h"
+#include "ContactInfo.h"
 #include "log.h"
 #include<iostream>
-#include<fstream>
 #include<string>
 
 using namespace std;
 
-extern void print();
-
-const char* test()
-{
-	string t = "manish joshi";
-	return std::move(t.c_str());
-}
-class CreatAccount
-{
-	public:
-		void Create()
-		{
-			NameElement aName;
-			aName.SetFirstName("Manish");
-        		aName.SetMiddleName("Amrutlal");
-        		aName.SetLastName("Joshi");
-        		LOG("CreateAccount",__FUNCTION__,"Account Created for: "+aName.toString());
-        
-		}
-};
-
 int main()
 
 {
-	InitLogger();
-	//const string filename = "logs.mj";
-       	//ofstream* obj=new ofstream;
+	
+	//InitLogger();
+	LoginDetail C;
+	ContactInfo I;
+	I.setAddress("panvalani khadaki");
+	I.setEmail("34joshi@gmail.com");
+	I.setMobile("8512030810");
+	C.SetLoginDetail("ARKPJ2850Q","1234passWORD");
+	if(C.CheckPassword("123Password"))
+		cout<<"Password is correct\n";
+	else
+		cout<<"Password is Wrong\n";
+	cout<<I.toString()<<endl;
 
-	//obj->open("logs.mj",std::ios_base::binary|std::ios_base::out);
-	//if(obj->is_open())
-	//{
-	//	cout<<"open";
-	//}
-	(new CreatAccount())->Create();
+	//DeletLogger();
 	return 0;
 }
 

@@ -5,7 +5,7 @@ BUILD_PATH = build
 BIN_PATH = $(BUILD_PATH)/bin
 NAME = mysoft
 SRC_EXT = cpp
-INCLUDES = -I ../includes -I ../includes/ThreadPool
+INCLUDES = -I ../includes -I ../includes/ThreadPool -I ../includes/Logger
 
 SOURCES = $(shell find $(SRC_PATH) -name "*.$(SRC_EXT)"| sort -k 1nr | cut -f2-)
 OBJECTS = $(SOURCES:$(SRC_PATH)/%.$(SRC_EXT)=$(BUILD_PATH)/%.o)
