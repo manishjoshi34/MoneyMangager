@@ -4,6 +4,8 @@
 #include "log.h"
 
 
+typedef long double AmountType;
+
 class FinancialInfo
 {
         private:

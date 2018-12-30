@@ -1,5 +1,5 @@
 GCC=g++
-FLAGS= -std=c++11 -g
+FLAGS= -std=c++11 -g -lpthread
 SRC_PATH = ../src
 BUILD_PATH = build
 BIN_PATH = $(BUILD_PATH)/bin

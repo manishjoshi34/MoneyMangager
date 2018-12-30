@@ -45,19 +45,19 @@ class Entry
 		void SetAmount(const AmountType&);
 
 };
-AmountType Entry::getAmount()
+inline AmountType Entry::getAmount()
 {
 	return mAmount;
 }
-void Entry::SetAmount(AmountType& obj)
+inline void Entry::SetAmount(const AmountType& obj)
 {
 	mAmount = obj;
 }
-void Entry::SetEntryType(EntryType& aType)
+inline void Entry::SetEntryType(const EntryType& aType)
 {
 	mType = aType;
 }
-EntryType Entry::getEntryType()
+inline EntryType Entry::getEntryType()
 {
 	return mType;
 }

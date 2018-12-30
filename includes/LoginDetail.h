@@ -16,7 +16,7 @@ class LoginDetail
 		bool  UpdatePassword(const std::string& aPassword);
 		bool  CheckPassword(const std::string&);
 
-		std::string GetPancardNumber(){return mPancardNumber}
+		std::string GetPancardNumber(){return mPancardNumber;}
 		
 
 };

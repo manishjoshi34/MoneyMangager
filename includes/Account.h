@@ -12,62 +12,6 @@
 #include<map>
 #include<vector>
 
-#define MAXDATE 31
-#define MAXMONTH 12
-#define MAXYEAR 200
-
-class Date
-{
-	private:
-		int mDD;
-		int mMM;
-		int mYY;
-		vector<Entry*>* mEntries;
-	public:
-		Date();
-		~Date();
-
-		int getDD();
-		int getMM();
-		int getYY();
-
-		void setDD(const int&);
-		void setMM(const int&);
-		void setYY(const int&);
-
-		void addEntry(Entry* aEntry);
-
-		vector<Entry*>* getEntryVector();
-		
-};
-class Month 
-{
-	private:
-		vector<Date>* mDates;
-	public:
-		Month();
-		~Month();
-		Date* getDate(int& dd);
-};
-class Year
-{
-	private:
-		vector<Month>* mMonths;
-	public:
-		Year();
-		~Year();
-		Date* getMonth(int& MM,int DD);
-};
-class Calender
-{
-	private:
-		vector<Year*> mYears;
-	public:
-		Calender();
-		~Calender();
-		Date* getDate(int& DD,int& MM,int& YY);
-};
-
 class Account{
 	private:
 		static long int mNumberOfAccounts;
@@ -76,7 +20,7 @@ class Account{
 		LoginDetail* mLoginData;
 		ContactInfo* mContactInfo;
 		FinancialInfo* mFinacialInfo;
-		Calender* mCalender;
+		map<Date,Database>* mMap;
 
 	public:
 	       	Account();
