@@ -4,6 +4,9 @@
 
 typedef long double AmountType;
 
+#include<string>
+#include<sstream>
+
 enum EntryType
 {
         HealthCare = 0,
@@ -16,7 +19,6 @@ enum EntryType
         FoodDrinks,
         Fuel,
         Groceries,
-        Health,
         Rent,
         Transfer,
         Travel,
@@ -27,9 +29,13 @@ enum EntryType
 };
 
 
+
 class Entry
 {
 	private:
+		static int IDS;
+	private:
+		int mId;
 		AmountType mAmount;
 		EntryType mType;
 
@@ -40,91 +46,12 @@ class Entry
 
 		AmountType getAmount();
 		EntryType getEntryType();
+		int getId();
 
 		void SetEntryType(const EntryType& aType);
 		void SetAmount(const AmountType&);
 
-};
-inline AmountType Entry::getAmount()
-{
-	return mAmount;
-}
-inline void Entry::SetAmount(const AmountType& obj)
-{
-	mAmount = obj;
-}
-inline void Entry::SetEntryType(const EntryType& aType)
-{
-	mType = aType;
-}
-inline EntryType Entry::getEntryType()
-{
-	return mType;
-}
-Entry::Entry()
-{
-	mAmount = 0.0;
-}
-Entry::Entry(
-	const AmountType& aAmount,
-       	const EntryType& aType):
-	mAmount(aAmount),
-	mType(aType)
-{
-}
-Entry::~Entry()
-{
-}
-//.............CreditEntry.................
-//
-#if 0
-class CreditEntry : public Entry
-{	
-	private:
-		CreditType mType;
-	public:
-		CreditEntry();
-		CreditEntry(AmountType);
-		virtual ~CreditEntry();
-		void SetEntryType()
+		std::string toString();
 
 };
-CreditEntry::CreditEntry():
-	Entry()
-{
-}
-CreditEntry::CreditEntry(AmountType aAmount):
-	Entry(aAmount)
-{
-}
-CreditEntry::~CreditEntry()
-{
-
-}
-
-//..............DebitEntry..................
-
-class DebitEntry : public Entry
-{	
-	private:
-		ExpenceType mType;
-	public:
-		DebitEntry();
-		DebitEntry(AmountType);
-		virtual ~DebitEntry();
-
-};
-
-DebitEntry::DebitEntry():
-	Entry()
-{
-}
-DebitEntry::DebitEntry(AmountType aAmount):
-	Entry(aAmount)
-{
-}
-DebitEntry::~DebitEntry()
-{
-}
-#endif
 #endif

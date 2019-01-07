@@ -3,57 +3,40 @@
 #define __DATABASE_H__
 
 #include<string>
+#include<vector>
+#include<map>
 
-#define MAXENTRYTYPE 18 
+#include "Date.h"
+#include "Container.h"
+#include "Entry.h"
 
-class Date
-{
-        private:
-                int mDD;
-                int mMM;
-                int mYY;
-        public:
-                Date();
-                Date(const int&,const int&,const int&);
-                ~Date();
+using namespace std;
 
-                int getDD();
-                int getMM();
-                int getYY();
-
-                void setDD(const int&);
-                void setMM(const int&);
-                void setYY(const int&);
-
-                std::string toString();
-
-                friend bool operator < (const Date& obj1, const Date& obj2);
-};
-
-class Value
-{
-        private:
-                Date* mDate;
-                vector< vector<Entry*> > mEntries(MAXENTRYTYPE);
-        public:
-                Value();
-                ~Value();
-                vector<Entry*>* getEntryVector(const EntryType* aType);
-
-};
 
 class Database
 {
 	private :
-		map<Date,Value>* mMap;
-	public :
-		Database();
-		~Database();
-		bool AddEntry(const Date&,const Entry&);
-		const vector<Entry*>* getEntry(const Date&,const EntryType&);
-		bool DeletEntry(const Data&,const int&);
 
-		std::string showEntry(const Date&,const Date&);
-}
+		map<Date,Container*> mDateToEntryContainerMap;
+
+		map<int,Entry*> mIdToEntryMap;
+
+	public :
+
+		Database();
+
+		~Database();
+
+		bool addEntry(Date&,Entry&);
+
+		const Entry* getEntry(int&,EntryType);
+
+		List* getEntryList(Date&,EntryType);
+
+		bool DeletEntry(Date&,int&,EntryType);
+
+		std::string showEntry(Date&,Date&);
+};
+
 
 #endif

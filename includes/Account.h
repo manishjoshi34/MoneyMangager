@@ -7,6 +7,7 @@
 #include "Entry.h"
 #include "name.h"
 #include "ThreadPool.h"
+#include "Date.h"
 
 #include<string>
 #include<map>
@@ -20,7 +21,7 @@ class Account{
 		LoginDetail* mLoginData;
 		ContactInfo* mContactInfo;
 		FinancialInfo* mFinacialInfo;
-		map<Date,Database>* mMap;
+
 
 	public:
 	       	Account();
