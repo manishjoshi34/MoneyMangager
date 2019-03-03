@@ -23,24 +23,24 @@ const Entry* Database::getEntry(int& aId,EntryType aType)
 
 	return NULL;
 }	
-bool Database::addEntry(Date& aDate,Entry& aEntry)
+bool Database::addEntry(Date* aDate,Entry* aEntry)
 {
-	auto itr = mDateToEntryContainerMap.find(aDate);
+	auto itr = mDateToEntryContainerMap.find(*aDate);
 
 	if(itr != mDateToEntryContainerMap.end())
 	{
-		itr->second->addEntry(&aEntry);
+		itr->second->addEntry(aEntry);
 		
 	}
 	else
 	{	
 		
-		Container* container = new Container(&aDate);	
-		container->addEntry(&aEntry);
+		Container* container = new Container(aDate);	
+		container->addEntry(aEntry);
 		mDateToEntryContainerMap.insert(
-				std::pair<Date,Container*>(aDate,container));
+				std::pair<Date,Container*>(*aDate,container));
 		mIdToEntryMap.insert(
-				std::pair<int,Entry*>(aEntry.getId(),&aEntry));
+				std::pair<int,Entry*>(aEntry->getId(),aEntry));
 
 	}
 
@@ -68,15 +68,17 @@ bool Database::DeletEntry(Date& aDate,int& aId,EntryType aType)
 
 	return status;
 }
-std::string Database::showEntry(Date& fromDate,Date& toDate)
+void Database::showEntry(
+		Date& fromDate,
+		Date& toDate,
+		std::vector<Container*> aEntryList)
 {
-	stringstream out;
 	
 	if(fromDate.compare(toDate))
 	{
 		auto itr = mDateToEntryContainerMap.find(toDate);
                 if(itr != mDateToEntryContainerMap.end())
-                	out << itr->second->toString();
+                	aEntryList.push_back(itr->second);
 
 	}
 	else if(fromDate < toDate)
@@ -88,11 +90,10 @@ std::string Database::showEntry(Date& fromDate,Date& toDate)
 			itrFrom!=mDateToEntryContainerMap.end()
 		     )
 		{
-			out << itrFrom->second->toString();
+			aEntryList.push_back(itrFrom->second);
 			itrFrom++;
 		}
 	}
 
-	return out.str();
 }
 

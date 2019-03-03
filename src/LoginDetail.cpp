@@ -29,3 +29,7 @@ bool LoginDetail::CheckPassword(const std::string& aPassword)
 	 LOG("LoginDetail","CheckPassword");
 	 return false;
 }
+bool LoginDetail::SetpancardNo(const std::string& cardno)
+{
+	mPancardNumber.assign(cardno);
+}

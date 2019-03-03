@@ -20,14 +20,14 @@ class NameElement
 		NameElement();
 		NameElement(const string& aFirst,const string& aMiddle,const string& aLast);
 		~NameElement();
-		const string getFullName();
-		const string getFirstName();
-		const string getLastName();
-		const string getMiddleName();
+		string getFullName();
+		string getFirstName();
+		string getLastName();
+		string getMiddleName();
 		void SetFirstName(const string&);
 		void SetMiddleName(const string&);
 		void SetLastName(const string&);
-		const string toString();
+		string toString();
 		friend ostream & operator << (ostream&, const NameElement& name);
 
 };
@@ -48,19 +48,19 @@ NameElement::~NameElement()
 {
 
 }
-const string NameElement::getFirstName()
+string NameElement::getFirstName()
 {
 	return mFirstName;
 }
-const string NameElement::getMiddleName()
+string NameElement::getMiddleName()
 {
 	return mMiddleName;
 }
-const string NameElement::getLastName()
+string NameElement::getLastName()
 {
 	return mLastName;
 }
-const string NameElement::getFullName()
+string NameElement::getFullName()
 {	
 	string full(mFirstName);
 	full = full + " " + mMiddleName + " " +mLastName;
@@ -79,7 +79,7 @@ void NameElement::SetLastName(const string& aLast)
 {
 	mLastName.assign(aLast);
 }
-const string NameElement::toString()
+string NameElement::toString()
 {
 	return (mFirstName + " " + mMiddleName + " " + mLastName); 
 }
