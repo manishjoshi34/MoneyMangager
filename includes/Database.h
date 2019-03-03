@@ -27,7 +27,7 @@ class Database
 
 		~Database();
 
-		bool addEntry(Date&,Entry&);
+		bool addEntry(Date* ,Entry*);
 
 		const Entry* getEntry(int&,EntryType);
 
@@ -35,7 +35,9 @@ class Database
 
 		bool DeletEntry(Date&,int&,EntryType);
 
-		std::string showEntry(Date&,Date&);
+		void showEntry(Date&,Date&,vector<Container*>);
+
+		
 };
 
 

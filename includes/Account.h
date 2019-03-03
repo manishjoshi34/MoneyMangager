@@ -8,6 +8,7 @@
 #include "name.h"
 #include "ThreadPool.h"
 #include "Date.h"
+#include "Database.h"
 
 #include<string>
 #include<map>
@@ -21,20 +22,27 @@ class Account{
 		LoginDetail* mLoginData;
 		ContactInfo* mContactInfo;
 		FinancialInfo* mFinacialInfo;
+		Database* mDatabase;
 
 
 	public:
 	       	Account();
+		Account(NameElement*,LoginDetail*,ContactInfo*);
 		~Account();
 		
-		bool AddEntry(const AmountType& aAmount,const EntryType& aEntry);
-		std::string GetFullName();
-		std::string GetFirstName();
-		std::string GetLastName();
-		std::string GetMiddleName();
-		std::string GetEmailId();
-		std::string GetMobileNo();
-		std::string GetPancardNo();
+		bool AddEntry(
+				const AmountType& aAmount,
+				const EntryType& aEntry,
+				Date& aDate);
+		std::string getFullName();
+		std::string getFirstName();
+		std::string getLastName();
+		std::string getMiddleName();
+		std::string getEmailId();
+		std::string getMobileNo();
+		std::string getPancardNo();
+		std::string getAddress();
+
 
 		AmountType GetBalance();
 		AmountType GetTaxSavingInvestment();
@@ -48,10 +56,14 @@ class Account{
 		AmountType GetExpenceYear();
 		AmountType GetExpenceCustome();
 
-		void SetName(const std::string&);
-		void SetPancardNo(const std::string&);
-		void SetEmailId(const std::string&);
-		void SetMobileNo(const std::string&);
+		void SetFullName(std::string&);
+		void SetFirstName(std::string&);
+		void SetMiddleName(std::string&);
+		void SetLastName(std::string&);
+		void SetPancardNo(std::string&);
+		void SetEmailId(std::string&);
+		void SetMobileNo(std::string&);
+		void SetAddress(std::string&);
 		
 };
 

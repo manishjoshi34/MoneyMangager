@@ -15,8 +15,9 @@ class LoginDetail
 		bool SetLoginDetail(const std::string& aPancardNumber,const std::string& aPassword);
 		bool  UpdatePassword(const std::string& aPassword);
 		bool  CheckPassword(const std::string&);
+		bool  SetpancardNo(const std::string&);
 
-		std::string GetPancardNumber(){return mPancardNumber;}
+		std::string getPancard(){return mPancardNumber;}
 		
 
 };
