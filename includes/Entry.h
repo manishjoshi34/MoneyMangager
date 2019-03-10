@@ -7,12 +7,13 @@ typedef long double AmountType;
 #include<string>
 #include<sstream>
 
+namespace{
+
 enum EntryType
 {
         HealthCare = 0,
         Shopping,
-        Biils,
-        cable,
+        Bills,
         Electronics,
         EMI,
         Entertainment,
@@ -28,7 +29,7 @@ enum EntryType
         Other
 };
 
-
+}
 
 class Entry
 {

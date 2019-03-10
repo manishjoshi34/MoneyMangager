@@ -126,7 +126,48 @@ void Account::SetAddress(string& add)
 	mContactInfo->setAddress(add);
 }
 
+AmountType Account::GetBalance()
+{
+	return mFinacialInfo->getBalance();
+}
 
+AmountType Account::GetTaxSavingInvestment()
+{
+	return mFinacialInfo->getTaxsavingInvestment();
+}
+AmountType Account::GetInvestment()
+{
+	return mFinacialInfo->getInvestment();
+}
+AmountType Account::GetTotalTax()
+{
 
+}
+AmountType Account::GetPaidTax()
+{
 
+}
+AmountType Account::GetRemainingTax()
+{
 
+}
+AmountType Account::GetTotalExpence()
+{
+
+}
+AmountType Account::GetExpenceMonth()
+{
+
+}
+AmountType Account::GetExpenceDay()
+{
+
+}
+AmountType Account::GetExpenceYear()
+{
+
+}
+AmountType Account::GetExpenceCustome(Date* from,Date* to)
+{
+
+}

@@ -54,7 +54,7 @@ class Account{
 		AmountType GetExpenceMonth();
 		AmountType GetExpenceDay();
 		AmountType GetExpenceYear();
-		AmountType GetExpenceCustome();
+		AmountType GetExpenceCustome(Date*,Date*);
 
 		void SetFullName(std::string&);
 		void SetFirstName(std::string&);
