@@ -1,7 +1,10 @@
 #include "Account.h"
+#include "Entry.h"
 #include "log.h"
 
 using namespace std;
+
+typedef long double AmountType;
 
 
 Account::Account():

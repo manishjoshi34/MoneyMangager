@@ -7,7 +7,6 @@ typedef long double AmountType;
 #include<string>
 #include<sstream>
 
-namespace{
 
 enum EntryType
 {
@@ -29,7 +28,6 @@ enum EntryType
         Other
 };
 
-}
 
 class Entry
 {
@@ -43,7 +41,7 @@ class Entry
 	public:
 		Entry();
 		~Entry();
-		Entry(const AmountType&, const EntryType&);
+		Entry(AmountType, EntryType);
 
 		AmountType getAmount();
 		EntryType getEntryType();

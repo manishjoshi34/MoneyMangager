@@ -50,8 +50,8 @@ Entry::Entry()
         mAmount = 0.0;
 }
 Entry::Entry(
-        const AmountType& aAmount,
-        const EntryType& aType):
+        AmountType aAmount,
+        EntryType aType):
         mAmount(aAmount),
         mType(aType)
 {

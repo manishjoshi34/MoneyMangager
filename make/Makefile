@@ -34,7 +34,7 @@ $(BUILD_PATH)/%.o: $(SRC_PATH)/%.$(SRC_EXT)
 
 .PHONEY: clean
 clean :
-	@echo "DEleting $(BIN_NAME) symlink"
+	@echo "Deleting $(BIN_NAME) symlink"
 	@$(RM) $(NAME)
 	@echo "Deleting directories"
 	@$(RM) -rf $(BUILD_PATH)

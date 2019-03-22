@@ -43,6 +43,8 @@ class FinancialInfo
                 AmountType getTaxsavingInvestment(){return mTaxsavingInvestment;}
                 AmountType getRemainingTax(){return mRemainingTax;}
 		bool Update(EntryType &, AmountType &,bool&);
+		bool update(AmountType& aAmount,AmountType& type, bool& st);
+
 };
 
 FinancialInfo::FinancialInfo(){}
@@ -58,7 +60,7 @@ bool FinancialInfo::update(AmountType& aAmount,
 		type-=aAmount;
 }
 
-bool FinancialInfo::Update(EntryType &aType, AmountType &aAmount,bool st&)
+bool FinancialInfo::Update(EntryType &aType, AmountType &aAmount,bool &st)
 {
 	switch (aType)
 	{
