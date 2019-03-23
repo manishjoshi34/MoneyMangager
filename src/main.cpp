@@ -1,15 +1,13 @@
-#include "LoginDetail.h"
-#include "ContactInfo.h"
-#include "log.h"
-#include "Database.h"
 #include<iostream>
 #include<string>
 #include<map>
 #include<queue>
 #include<stdlib.h>
 
-using namespace std;
+#include "log.h"
+#include "name.h"
 
+using namespace std;
 
 
 string Menu[] = {
@@ -18,13 +16,14 @@ string Menu[] = {
 	"ADD ENTRY",
 	"SHOW ENTRY",
 	"DELETE ENTRY",
-	"EXIT",
 	"PERSONAL DETAIL",
 	"FIANCIAL DETAIL",
-	"EDIT PROFILE"
-};
+	"SHOW PROFILE",
+	"EDIT PROFILE",
+	"EXIT",
+	};
 
-const int menu_items = 8;
+const int menu_items = 10;
 bool while_condition = true;
 
 void print_header()
@@ -44,14 +43,24 @@ void print_menu()
 			"Hello!\nPlease Select Menu option and press Enter\n";
 	cout<<MENU_STRING;
 	
-	for(int i=1;i<=menu_items;i++)
+	for(int i=1;i<=menu_items;i=i+2)
 	{
-		cout<<i<<") "<< Menu[i-1].c_str()<<endl;
+		cout<<i<<") "<< Menu[i-1].c_str()<<"\t\t\t"<<i+1<<") "<<Menu[i]<<endl;
 	}
 
 }
 void CreateAccount()
 {
+
+	string FirstName,MiddleName,LastName;
+	cout<<"--> Enter Your First Name : ";
+	cin>>FirstName;
+	cout<<"--> Enter Your Middle Name : ";
+	cin>>MiddleName;
+	cout<<"--> Enter Your Last Name : ";
+	cin>>LastName;
+
+	NameElement* name = new NameElement(FirstName,MiddleName,LastName);	   cout<<"Your full Name is : "<<name->getFullName()<<endl;
 
 }
 void Login(){}
@@ -74,11 +83,11 @@ int main()
 
 {
 	system("clear");
-	print_header();
-	print_menu();
-
+	print_header();	
+	print_menu();	
 	while(while_condition)
 	{
+		
 		int option;
 		cin>>option;
 
@@ -86,43 +95,24 @@ int main()
 		{
 			case 1:
 		 	      CreateAccount();
-			      system("clear");
-			      print_header();
-			      print_menu();
 			      break;
 			case 2:
 			      Login();
-			      system("clear");
-			      print_header();
-			      print_menu();
 			      break;
 			case 3:
 			      AddEntry();
-			      system("clear");
-			      print_header();
-			      print_menu();
 			      break;
 			case 4:
 			      ShowEntry();
-			      system("clear");
-			      print_header();
-			      print_menu();
 			      break;
 			case 5:
 			      DeletEntry();
-			      system("clear");
-			      print_header();
-			      print_menu();
 			      break;
-			case 6:
+			case 10:
 			      Exit();
-			      system("clear");
-			      print_header();
 			      break;
 			default :
 			      cout<<"ENTER VALID OPTION\n";
-			      system("clear");
-			      print_menu();
 			      break;		
 		}
 

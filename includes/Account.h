@@ -1,18 +1,21 @@
 #ifndef __ACCOUNT_H__
 #define __ACCOUNT_H__
 
-#include "LoginDetail.h"
-#include "ContactInfo.h"
-#include "FinacialInfo.h"
 #include "Entry.h"
-#include "name.h"
-#include "ThreadPool.h"
-#include "Date.h"
-#include "Database.h"
-
 #include<string>
 #include<map>
 #include<vector>
+
+class ContactInfo;
+class Date;
+class Database;
+class Entry;
+class FinancialInfo;
+class LoginDetail;
+class NameElement;
+
+typedef long double AmountType;
+
 
 class Account{
 	private:

@@ -7,7 +7,6 @@ typedef long double AmountType;
 #include<string>
 #include<sstream>
 
-
 enum EntryType
 {
         HealthCare = 0,
@@ -27,7 +26,6 @@ enum EntryType
 	Loan,
         Other
 };
-
 
 class Entry
 {

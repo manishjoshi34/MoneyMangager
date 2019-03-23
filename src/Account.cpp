@@ -1,5 +1,11 @@
 #include "Account.h"
+#include "ContactInfo.h"
+#include "Date.h"
+#include "Database.h"
 #include "Entry.h"
+#include "FinancialInfo.h"
+#include "LoginDetail.h"
+#include "name.h"
 #include "log.h"
 
 using namespace std;
