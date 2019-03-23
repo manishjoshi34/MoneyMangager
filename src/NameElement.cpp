@@ -1,5 +1,4 @@
-#include "name.h"
-
+#include "NameElement.h"
 
 NameElement::NameElement()
 {

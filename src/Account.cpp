@@ -5,13 +5,13 @@
 #include "Entry.h"
 #include "FinancialInfo.h"
 #include "LoginDetail.h"
-#include "name.h"
 #include "log.h"
 
 using namespace std;
 
 typedef long double AmountType;
 
+long int Account::mNumberOfAccounts = 0;
 
 Account::Account():
 	mName(NULL),
@@ -179,4 +179,9 @@ AmountType Account::GetExpenceYear()
 AmountType Account::GetExpenceCustome(Date* from,Date* to)
 {
 
+}
+
+bool Account::CheckPassword(std::string& aPassword)
+{
+	return mLoginData->CheckPassword(aPassword);
 }

@@ -1,11 +1,15 @@
-#include<iostream>
-#include<string>
-#include<map>
-#include<queue>
-#include<stdlib.h>
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <map>
+#include <queue>
+#include <stdlib.h>
 
 #include "log.h"
-#include "name.h"
+#include "ContactInfo.h"
+#include "LoginDetail.h"
+#include "Account.h"
+#include "NameElement.h"
 
 using namespace std;
 
@@ -28,7 +32,7 @@ bool while_condition = true;
 
 void print_header()
 {	std::ostringstream HEADER_STRING;
-	HEADER_STRING << "************************************************"<<"\n"
+	HEADER_STRING << "******************************************************"<<"\n"
 		<<"****		WELCOME TO MYSOFT		*******\n"
 		<<"****	This Software is to help you manage 	*******\n"
 		<<"****	your personal expences and calculate	*******\n"
@@ -45,12 +49,15 @@ void print_menu()
 	
 	for(int i=1;i<=menu_items;i=i+2)
 	{
+		cout<<setw(5);
 		cout<<i<<") "<< Menu[i-1].c_str()<<"\t\t\t"<<i+1<<") "<<Menu[i]<<endl;
 	}
 
 }
-void CreateAccount()
+void CreateAccount(map<string,Account>& myMap)
 {
+	
+	LOG("main","CreateAccount");
 
 	string FirstName,MiddleName,LastName;
 	cout<<"--> Enter Your First Name : ";
@@ -60,10 +67,100 @@ void CreateAccount()
 	cout<<"--> Enter Your Last Name : ";
 	cin>>LastName;
 
-	NameElement* name = new NameElement(FirstName,MiddleName,LastName);	   cout<<"Your full Name is : "<<name->getFullName()<<endl;
+	NameElement* name = new NameElement(
+			FirstName,
+			MiddleName,
+			LastName);
+	cout<<"Your full Name is : "<<name->getFullName()<<endl;
+
+	string aAddress,aEmail,aMob;
+	cout<<"--> Enter Your Address: ";
+	getchar();
+	getline (cin, aAddress);
+	cout<<"--> Enter Your EmailId: ";
+	getline (cin, aEmail);
+	cout<<"--> Enter Your Mobile Number: ";
+	getline (cin, aMob);
+
+	ContactInfo* info = new ContactInfo(aAddress,aEmail,aMob);
+
+	cout<<"Your Contact Detail is: "<<info->toString()<<endl;
+
+	string pancard,password,tempPassword;
+
+	cout<<"--> Enter Your Pancard Number: ";
+	getline (cin, pancard);
+	
+	bool getpass;
+	do{
+		getpass = false;
+		cout<<"--> Enter Your Password: ";
+		getline (cin, password);
+
+		cout<<"--> Confirm your Password: ";
+		getline (cin, tempPassword);
+		
+		if(password.compare(tempPassword) != 0)
+		{
+			cout<<"Both password is different!"
+				<<" Please try again"<<endl;
+			getpass = true;
+		}
+
+	}while(getpass);
+
+	LoginDetail* login = new LoginDetail();
+	login->SetLoginDetail(pancard,password);
+
+	Account* aAccount = new Account(name,login,info);
+	
+	myMap.insert(make_pair(pancard,*aAccount));
+
+	cout<<"Congratulation! "<<name->getFullName()<<endl;
+	cout<<"Your Account is Open"<<endl;
 
 }
-void Login(){}
+void Login(map<string,Account>& myMap){
+
+	LOG("main","Login");
+
+	string pancard,password;
+	cout<<"--> Enter pancard Number: ";
+	getchar();
+	getline (cin, pancard);
+
+	cout<<"--> Enter Password: ";
+	getline (cin, password);
+
+	auto itr = myMap.find(pancard);
+
+	Account* aAccount;
+
+	if(itr != myMap.end())
+	{
+		aAccount = &(itr->second);
+		if(aAccount->CheckPassword(password))
+		{
+			cout<<" Welcome "<<aAccount->getFullName()<<endl;
+		}
+		else
+		{
+			cout<<" Please check your password"<<endl;
+			return;
+		}
+	}
+	else
+	{
+		cout<<"This Pancard is not in database"<<endl;
+	}
+
+
+}
+
+void save(map<string,Account>& myMap)
+{
+
+}
 
 void AddEntry(){}
 
@@ -81,7 +178,7 @@ void Exit(){
 
 int main()
 
-{
+{	map<string, Account> aAccountData;
 	system("clear");
 	print_header();	
 	print_menu();	
@@ -94,10 +191,10 @@ int main()
 		switch (option)
 		{
 			case 1:
-		 	      CreateAccount();
+		 	      CreateAccount(aAccountData);
 			      break;
 			case 2:
-			      Login();
+			      Login(aAccountData);
 			      break;
 			case 3:
 			      AddEntry();

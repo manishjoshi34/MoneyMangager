@@ -2,6 +2,8 @@
 #define __ACCOUNT_H__
 
 #include "Entry.h"
+#include "NameElement.h"
+
 #include<string>
 #include<map>
 #include<vector>
@@ -67,9 +69,9 @@ class Account{
 		void SetEmailId(std::string&);
 		void SetMobileNo(std::string&);
 		void SetAddress(std::string&);
-		
+	
+		bool CheckPassword(std::string&);	
 };
 
-long int Account::mNumberOfAccounts = 0;
 
 #endif

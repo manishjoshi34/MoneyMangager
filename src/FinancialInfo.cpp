@@ -1,5 +1,4 @@
 #include "FinancialInfo.h"
-#include "Entry.h"
 #include "log.h"
 
 typedef long double AmountType;

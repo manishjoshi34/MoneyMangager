@@ -1,7 +1,7 @@
 #ifndef __FINANCIAL_INFO_H__
 #define __FINANCIAL_INFO_H__
 
-class Entry;
+#include "Entry.h"
 
 typedef long double AmountType;
 
