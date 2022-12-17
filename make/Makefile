@@ -1,11 +1,11 @@
 GCC=g++
-FLAGS= -std=c++11 -g -lpthread
+FLAGS= -std=c++17 -g -lpthread
 SRC_PATH = ../src
 BUILD_PATH = build
 BIN_PATH = $(BUILD_PATH)/bin
 NAME = mysoft
 SRC_EXT = cpp
-INCLUDES = -I ../includes -I ../includes/ThreadPool -I ../includes/Logger
+INCLUDES = -I ../includes -I ../includes/ThreadPool -I ../includes/Logger -I ../includes/Commands
 
 SOURCES = $(shell find $(SRC_PATH) -name "*.$(SRC_EXT)"| sort -k 1nr | cut -f2-)
 OBJECTS = $(SOURCES:$(SRC_PATH)/%.$(SRC_EXT)=$(BUILD_PATH)/%.o)
@@ -22,6 +22,7 @@ dirs:
 	@echo $(OBJECTS)
 	@mkdir -p $(BUILD_PATH)
 	@mkdir -p $(BIN_PATH)
+	@mkdir -p $(BUILD_PATH)/Commands
 
 .PHONEY: all
 all: $(OBJECTS)

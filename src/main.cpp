@@ -10,6 +10,7 @@
 #include "LoginDetail.h"
 #include "Account.h"
 #include "NameElement.h"
+#include "Commands/commands.h"
 
 using namespace std;
 
@@ -175,10 +176,18 @@ void Exit(){
 
 }
 
+#include "MainMenu.h"
 
 int main()
 
-{	map<string, Account> aAccountData;
+{	
+
+	MainMenu menu("Main");
+	menu.execute();
+
+	#if 0
+
+	map<string, Account> aAccountData;
 	system("clear");
 	print_header();	
 	print_menu();	
@@ -214,7 +223,7 @@ int main()
 		}
 
 	}
-
+	#endif
 }
 
 

@@ -2,10 +2,7 @@
 
 #define __DATABASE_H__
 
-#include<string>
-#include<vector>
-#include<map>
-
+#include "stdHeader.h"
 #include "Date.h"
 #include "Container.h"
 #include "Entry.h"
