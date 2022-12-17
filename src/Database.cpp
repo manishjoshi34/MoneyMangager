@@ -1,6 +1,7 @@
 #include "Database.h"
 #include "Entry.h"
 #include "Container.h"
+#include "log.h"
 #include<sstream>
 
 
@@ -8,9 +9,11 @@ using namespace std;
 
 Database::Database()
 {
+	LOG("Database created\n");
 }
 Database::~Database()
 {
+	LOG("Database deleted\n");
 }
 const Entry* Database::getEntry(int& aId,EntryType aType)
 {
@@ -96,4 +99,24 @@ void Database::showEntry(
 	}
 
 }
+
+//Database* _database = 0;
+
+Database*
+Database::getDatabase() {
+	static Database* database = new Database();
+	return database;
+}
+
+void 
+Database::clearDatabase()
+{
+	Database* database = Database::getDatabase();
+	delete database;
+	database = 0;
+}
+
+void
+Database::saveDatabase()
+{}
 

@@ -5,7 +5,7 @@
 #include <vector>
 
 class Command {
-    private:
+    protected:
         std::string             _name;
         std::string             _header;
 	    std::string             _footer;

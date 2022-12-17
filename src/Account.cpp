@@ -51,7 +51,7 @@ bool Account::AddEntry(
 	LOG("Account::AddEntry");
 
 	if(mDatabase == NULL)
-		mDatabase =  new Database();
+		mDatabase =  Database::getDatabase();
 	Entry* entry = new Entry(aAmount, aEntry);
 	mDatabase->addEntry(static_cast<Date*>(&aDate), entry);
 	return true;	

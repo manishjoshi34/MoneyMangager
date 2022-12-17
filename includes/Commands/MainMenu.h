@@ -3,9 +3,8 @@
 class MainMenu : public Command
 {
 	public:
-    	MainMenu(std::string name,
-			std::string footer = "Exit") :
-			Command(name, name, footer)
+    	MainMenu(std::string name) :
+			Command(name, name, "Exit")
 		{}
 
 

@@ -18,11 +18,12 @@ class Database
 
 		map<int,Entry*> mIdToEntryMap;
 
-	public :
-
+	private:
 		Database();
 
 		~Database();
+
+	public :
 
 		bool addEntry(Date* ,Entry*);
 
@@ -34,6 +35,12 @@ class Database
 
 		void showEntry(Date&,Date&,vector<Container*>);
 
+	public:
+		static Database* getDatabase();
+
+		static void saveDatabase();
+
+		static void clearDatabase();
 		
 };
 

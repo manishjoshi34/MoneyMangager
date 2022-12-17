@@ -6,8 +6,8 @@
 class LoginDetail
 {
 	private:
-		std::string mPancardNumber;
-		std::string  mPassword;
+		std::string 	mPancardNumber;
+		std::string  	mPassword;
 	public:
 		LoginDetail();
 		~LoginDetail();

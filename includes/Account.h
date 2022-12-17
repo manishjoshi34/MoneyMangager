@@ -31,7 +31,7 @@ class Account{
 
 
 	public:
-	       	Account();
+	    Account();
 		Account(NameElement*,LoginDetail*,ContactInfo*);
 		~Account();
 		
